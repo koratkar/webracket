@@ -110,7 +110,7 @@
       (lambda (query)
         x))
 
-;------Example application----;
+;------Example application (leave it commented out! aaaaaaah)----;
 
 ; (app-get "main" (send "♫ I want to be the very best, like no one ever was ♫"))
 
@@ -120,14 +120,14 @@
 
 ; (listen-on 3000)
 
-(hash-set! dispatch-table "hello/e"
+; (hash-set! dispatch-table "hello/e"
            (λ (query)
                    "e"))
-(app-get "" (send "o"))
-(app-get "/" (send "333030"))
+; (app-get "" (send "o"))
+; (app-get "/" (send "333030"))
 
-(app-get "ee" (send `(html (body (h1 "Hello!")))))
+; (app-get "ee" (send `(html (body (h1 "Hello!")))))
 
 
 
-(listen-on 3000)
+; (listen-on 3000)
