@@ -1,7 +1,7 @@
 #lang racket
 
-(require "WebRacket.rkt"
-         racket/dict)
+(require "WebRacket.rkt")
+(require racket/dict)
 
 ;; Database functions
 (define mem-list (make-hash))
@@ -39,14 +39,6 @@
 ;;;;; web server 
 
 (create "Meaning" "43")
-(create "eeeee" 42)
-(create "rick" "morty")
 
-(define (send-val)
-  (lambda (key)
-    (read key)))
-
-(app-get-keys mem-list read)
-(app-get "or/and" (send "e"))
 
 (listen-on 3000)

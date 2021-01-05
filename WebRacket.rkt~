@@ -2,18 +2,15 @@
 
 (require xml net/url
          html
-         racket/control
-         racket/dict)
+         racket/control)
 
 (provide listen-on
          app-get
-         app-get-keys
          app-post
-         app-static
-         send)
+         app-static)
 
 ;-----heavy systems programming web server stuff-----
-; adapted from racket systems programming tutorial:
+; modified from racket systems programming tutorial:
 ; https://docs.racket-lang.org/more/------
 ; Basic Web Server
 (define (listen-on port-number)
@@ -103,31 +100,18 @@
 (define (send-file file-path)
   (display "I send files!"))
 
-(define (app-get-keys dict read?)
-  (map (λ (key) (app-get key (send (read? key)))) (dict-keys dict)))
-
+; I need to format html but make sure the variable query is still query
+; Make sure I return code that will will get run later, I think this is where macros can be useful somehow
 (define (send x)
+  (if (string? x)
       (lambda (query)
-        x))
+        x)
+  (lambda (query)
+      (format "~s" x))))
+
 
 ;------Example application----;
 
 ; (app-get "main" (send "♫ I want to be the very best, like no one ever was ♫"))
 
-; (define list-of-things '("apple" "bannana" "creation" "God" "point?"))
-
-; (app-get-list list-of-things (send "
-
 ; (listen-on 3000)
-
-(hash-set! dispatch-table "hello/e"
-           (λ (query)
-                   "e"))
-(app-get "" (send "o"))
-(app-get "/" (send "333030"))
-
-(app-get "ee" (send `(html (body (h1 "Hello!")))))
-
-
-
-(listen-on 3000)
